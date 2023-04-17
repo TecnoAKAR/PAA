@@ -48,7 +48,7 @@ class Pinturillo : AppCompatActivity() {
         //in form of PNG, in the storage
         binding.btnSave.setOnClickListener {
 
-            createFile("sample.png", startActivityForResult)
+            createFile("TecnoAkar.png", startActivityForResult)
         }
         //the color button will allow the user to select the color of his brush
         binding.btnColor.setOnClickListener {
