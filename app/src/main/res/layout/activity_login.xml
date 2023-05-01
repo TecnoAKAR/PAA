@@ -103,7 +103,9 @@
         android:ems="10"
         android:fontFamily="@font/questrial"
         android:inputType="textEmailAddress"
-        android:hint="Correo electrinonico"
+        android:hint="Correo electronico"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textAlignment="center"
         android:background="@drawable/button_design"
 
@@ -116,7 +118,7 @@
         app:layout_constraintVertical_bias="0.522" />
 
     <EditText
-        android:id="@+id/btn_contraseña"
+        android:id="@+id/password"
         android:layout_width="285dp"
         android:layout_height="48dp"
         android:background="@drawable/button_design"
@@ -125,6 +127,8 @@
         android:inputType="textPassword"
         android:hint="Contraseña"
         android:textAlignment="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

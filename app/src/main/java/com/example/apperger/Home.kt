@@ -1,16 +1,22 @@
 package com.example.apperger
 
+import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import cucerdariancatalin.chess.ChessView
 
 class Home : AppCompatActivity() {
+
+    private  lateinit var mysong: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        mysong= MediaPlayer.create(this , R.raw.the_little_gangster)
+        mysong.start()
         val btn_config= findViewById<ImageButton>(R.id.configuracion)
         btn_config.setOnClickListener {
             val intent: Intent = Intent(this,Settings::class.java)
@@ -35,5 +41,10 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+    override fun onPause() {
+        super.onPause()
+        mysong.release()
+        finish()
     }
 }

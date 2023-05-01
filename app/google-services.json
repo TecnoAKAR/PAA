@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "396381204985",
+    "project_id": "apperger-2e80a",
+    "storage_bucket": "apperger-2e80a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396381204985:android:42abce844c1f05e9110d28",
+        "android_client_info": {
+          "package_name": "com.example.apperger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396381204985-qu2upe8rdr46ivuogmmj4730u55643nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2DvzXyxysEqLFe7p_ROb_LLYRcoynjGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396381204985-qu2upe8rdr46ivuogmmj4730u55643nh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
