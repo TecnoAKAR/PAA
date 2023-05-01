@@ -24,9 +24,11 @@ class Login : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val email= editEmail.text.toString()
             val password= editPassword.text.toString()
-            login(email, password)
-
-
+            if (email!=""||password!=""){
+                login(email, password)
+            }else {
+                Toast.makeText(this@Login,"Escribe un usuario valido", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
