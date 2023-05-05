@@ -39,12 +39,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/black">
+            
 
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/rangebar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
+
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,6 +85,22 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_paint_brush"
                 android:text="Stroke" />
+            <ImageButton
+                android:id="@+id/btn_paint"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_pintura"
+
+                android:text="Paint" />
+
+            <ImageButton
+                android:id="@+id/btn_goma"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_eraser"
+                android:text="Paint" />
         </LinearLayout>
 
 

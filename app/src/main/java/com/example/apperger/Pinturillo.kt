@@ -2,6 +2,7 @@ package com.example.apperger
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -12,9 +13,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.apperger.databinding.ActivityPinturilloBinding
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
+import com.github.dhaval2404.colorpicker.MaterialColorPickerBottomSheet
 import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.slider.RangeSlider
 
 
@@ -49,8 +52,6 @@ class Pinturillo : AppCompatActivity() {
             createFile("TecnoAkar.png", startActivityForResult)
         }
         binding.btnColor.setOnClickListener {
-
-
             ColorPickerDialog
                 .Builder(this)
                 .setTitle("Elige un color")
@@ -59,6 +60,22 @@ class Pinturillo : AppCompatActivity() {
                 }
                 .show()
         }
+        binding.btnGoma.setOnClickListener {
+
+            val goma = Color.WHITE
+
+            binding.drawView.setColor(goma)
+
+        }
+        binding.btnPaint.setOnClickListener {
+            val grueso: Int
+            grueso=5000
+            binding.drawView.setStrokeWidth(
+                grueso
+            )
+        }
+
+
         binding.btnStroke.setOnClickListener {
             if (binding.rangebar.visibility == View.VISIBLE)
                 binding.rangebar.visibility = View.GONE
