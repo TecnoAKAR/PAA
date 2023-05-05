@@ -30,20 +30,24 @@ class ChatPrivate : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val receiverUid = intent.getStringExtra("uid")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
+
+
         mDbRef = FirebaseDatabase.getInstance().getReference()
 
-        //puede tronar xd
+
         supportActionBar?.title = name
 
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
-
+        var lista: Int
 
         chatRecyclerView = findViewById(R.id.chatRecyclerView)
         messageBox = findViewById(R.id.messageBox)
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
+
+
 
 
         chatRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -62,9 +66,11 @@ class ChatPrivate : AppCompatActivity() {
 
 
                 }
-
+                lista = messageList.size
+                chatRecyclerView.scrollToPosition(lista-1)
 
             }
+
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")

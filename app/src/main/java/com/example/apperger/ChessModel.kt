@@ -6,7 +6,6 @@ import kotlin.math.abs
 object ChessModel {
     var pieceBox=mutableSetOf<ChessPiece>()
 
-    //конструктор на фигурите
     init {
         reset()
 
@@ -21,14 +20,13 @@ object ChessModel {
     fun canRookMove(from: Square,to: Square):Boolean{
 
         if (from.col==to.col && isClearVerticallyBetween(from,to) ||
-                from.row==to.row && isClearHorizontallyBetween(from, to)){// проверка дали топа се движи само по колона или ред  и метода за проверка дали има фигура на пътя
+                from.row==to.row && isClearHorizontallyBetween(from, to)){
 
             return true
         }
         return false
     }
 
-    //има ли блокираща фигура на пътя хоризонтално
     private fun isClearHorizontallyBetween(from: Square,to: Square):Boolean{
         if(from.row!=to.row) return false
 
@@ -43,7 +41,7 @@ object ChessModel {
         return true
     }
 
-    //има ли блокираща фигура на пътя вертикално
+
     private fun isClearVerticallyBetween(from: Square,to: Square):Boolean{
         if(from.col!=to.col) return false
 
@@ -58,7 +56,6 @@ object ChessModel {
         return true
     }
 
-//проверка дали диагонално има фигура която е между нашата позиция и тази на която искаме да поставим фигура
     fun isClearDiagonally(from: Square,to: Square):Boolean{
     if (abs(from.col-to.col)!=abs(from.row-to.row)) return false
         val gap=abs(from.col-to.col)-1
@@ -93,18 +90,38 @@ object ChessModel {
         return false
     }
 
-    //fun canPawnMove(from: Square,to: Square):Boolean{
-        //if(from.col==to.col){
-           //return true
-        //}
+    fun canPawnMove(from: Square, to: Square): Boolean {
+        val movingPiece = pieceAt(from) ?: return false
 
-        //return false
-    //}
+        if (movingPiece.player == ChessPlayer.WHITE) {
+            if (from.row == 1 && to.row == 3 && from.col == to.col && pieceAt(from.col, 2) == null && pieceAt(to) == null) {
+                return true
+            }
+            if (from.row + 1 == to.row && from.col == to.col && pieceAt(to) == null) {
+                return true
+            }
+            if (from.row + 1 == to.row && abs(from.col - to.col) == 1 && pieceAt(to)?.player == ChessPlayer.BLACK) {
+                return true
+            }
+        } else {
+            if (from.row == 6 && to.row == 4 && from.col == to.col && pieceAt(from.col, 5) == null && pieceAt(to) == null) {
+                return true
+            }
+            if (from.row - 1 == to.row && from.col == to.col && pieceAt(to) == null) {
+                return true
+            }
+            if (from.row - 1 == to.row && abs(from.col - to.col) == 1 && pieceAt(to)?.player == ChessPlayer.WHITE) {
+                return true
+            }
+        }
+
+        return false
+    }
 
     fun canMove(from: Square,to: Square):Boolean
     {
         if (from.col==to.col&& from.row==to.row){
-            return false// ако квадрата , на който местим е същия, ретърнваме и няма нужда да проверяваме за всяка фигура по отделно
+            return false
         }
         val movingPiece= pieceAt(from)?: return false
 
@@ -114,7 +131,7 @@ object ChessModel {
             Chessman.BISHOP ->return canBishopMove(from, to)
             Chessman.QUEEN ->return canQueenMove(from,to)
             Chessman.KING ->return canKingMove(from,to)
-            //Chessman.PAWN -> canPawnMove(from,to)
+            Chessman.PAWN ->return canPawnMove(from,to)
             else -> {
 
             }
@@ -149,10 +166,8 @@ object ChessModel {
 
     }
     fun reset(){
-        //изпразваме дъската при натискане на бутона
         pieceBox.removeAll(pieceBox)
 
-        //добавяне на фигурите
         for(i in 0..1)
         {
             pieceBox.add(ChessPiece(0+ i*7,0, ChessPlayer.WHITE,Chessman.ROOK, R.drawable.rook_white))
@@ -178,13 +193,11 @@ object ChessModel {
         }
 
     }
-//къде се намират фигурите на дъската
     fun pieceAt(square: Square):ChessPiece?{
         return pieceAt(square.col,square.row)
     }
 
 
-    //проверка фигурата съществува ли на дъската
     private fun pieceAt(col:Int, row:Int) : ChessPiece?{
         for (piece in pieceBox){
             if(col==piece.col&& row==piece.row)
@@ -195,7 +208,6 @@ object ChessModel {
         return null
     }
 
-    //визуализираме на дъската в логкат и фигурите по нея
     override fun toString(): String {
         var desc=" \n"
         for(row in 7 downTo 0)

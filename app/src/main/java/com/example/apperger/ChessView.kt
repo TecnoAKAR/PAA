@@ -48,7 +48,6 @@ class ChessView(context: Context?, attrs: AttributeSet?) : View(context, attrs) 
     }
 
 
-//рисуваме дъската
     override fun onDraw(canvas: Canvas?) {
 
     canvas?:return
@@ -125,7 +124,6 @@ class ChessView(context: Context?, attrs: AttributeSet?) : View(context, attrs) 
     }
 
 
-    //функция за локализиране и id на фигурите
     private fun drawPieceAt(canvas: Canvas, col:Int, row:Int, resId:Int){
         val bitmap=bitmaps[resId]!!
         canvas.drawBitmap(bitmap, null, RectF(originX+col*cellSide,originY+(7-row)*cellSide,originX+(col+1)*cellSide,originY+((7-row)+1)*cellSide),paint)
