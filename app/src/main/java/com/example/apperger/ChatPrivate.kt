@@ -1,10 +1,12 @@
 package com.example.apperger
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +27,7 @@ class ChatPrivate : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_private)
-        val name =intent.getStringExtra("name")
+        val name = intent.getStringExtra("name")
         val receiverUid = intent.getStringExtra("uid")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
         mDbRef = FirebaseDatabase.getInstance().getReference()
@@ -33,17 +35,18 @@ class ChatPrivate : AppCompatActivity() {
         //puede tronar xd
         supportActionBar?.title = name
 
-        senderRoom = receiverUid+senderUid
-        receiverRoom = senderUid+ receiverUid
+        senderRoom = receiverUid + senderUid
+        receiverRoom = senderUid + receiverUid
 
 
-        chatRecyclerView =findViewById(R.id.chatRecyclerView)
+        chatRecyclerView = findViewById(R.id.chatRecyclerView)
         messageBox = findViewById(R.id.messageBox)
-        sendButton= findViewById(R.id.sentButton)
-        messageList= ArrayList()
+        sendButton = findViewById(R.id.sentButton)
+        messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
 
-        chatRecyclerView.layoutManager= LinearLayoutManager(this)
+
+        chatRecyclerView.layoutManager = LinearLayoutManager(this)
         chatRecyclerView.adapter = messageAdapter
 
         //Logica para agregar los mensajes al recyclerview
@@ -57,8 +60,10 @@ class ChatPrivate : AppCompatActivity() {
                     val message= postSnapshot.getValue(Message::class.java)
                     messageList.add(message!!)
 
+
                 }
-                messageAdapter.notifyDataSetChanged()
+
+
             }
 
             override fun onCancelled(error: DatabaseError) {

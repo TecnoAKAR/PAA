@@ -16,43 +16,52 @@
         <activity
             android:name=".ChatPrivate"
             android:exported="false"
+            android:parentActivityName=".Chat"
             android:theme="@style/Theme.AppCompat.Light"/>
         <activity
             android:name=".RompeCabezas"
             android:exported="false"
-            android:label="@string/title_activity_rompe_cabezas"
+            android:parentActivityName=".Minijuegos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SimonDice"
             android:exported="false"
+            android:parentActivityName=".Minijuegos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Pinturillo"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:parentActivityName=".Minijuegos"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
         <activity
             android:name=".Ajedrez"
             android:exported="false"
+            android:parentActivityName=".Minijuegos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Estimulativas"
             android:exported="false"
+            android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Minijuegos"
             android:exported="false"
+            android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Chat"
             android:exported="false"
+            android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Settings"
             android:exported="false"
+            android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Home"
             android:exported="false"
+            android:parentActivityName=".Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Login"

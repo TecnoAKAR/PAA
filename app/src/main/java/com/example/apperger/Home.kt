@@ -45,6 +45,5 @@ class Home : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mysong.release()
-        finish()
     }
 }
