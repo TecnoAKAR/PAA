@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -80,11 +81,17 @@ class ChatPrivate : AppCompatActivity() {
 
         sendButton.setOnClickListener{
             val message= messageBox.text.toString()
-            val messageObject = Message(message, senderUid)
-            mDbRef.child("chats").child(senderRoom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
-                mDbRef.child("chats").child(receiverRoom!!).child("messages").push().setValue(messageObject)
+            if(message!="") {
+                val messageObject = Message(message, senderUid)
+                mDbRef.child("chats").child(senderRoom!!).child("messages").push()
+                    .setValue(messageObject).addOnSuccessListener {
+                    mDbRef.child("chats").child(receiverRoom!!).child("messages").push()
+                        .setValue(messageObject)
+                }
+                messageBox.setText("")
+            }else{
+                Toast.makeText(this@ChatPrivate,"Escribe un mensaje",Toast.LENGTH_SHORT).show()
             }
-            messageBox.setText("")
 
         }
 
