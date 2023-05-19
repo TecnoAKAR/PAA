@@ -34,8 +34,11 @@ class ActivityRegistro : AppCompatActivity() {
             val password = editPassword.text.toString()
             val name = editName.text.toString()
 
-
-            SignUp(name, email,password)
+            if(email!=""&&password!=""&&name!="") {
+                SignUp(name, email, password)
+            }else{
+                Toast.makeText(this@ActivityRegistro, "Falta por escribir algun campo", Toast.LENGTH_SHORT).show()
+            }
         }
 
 

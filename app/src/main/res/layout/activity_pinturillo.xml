@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pinturillo"
-    android:background="#BF40C4FF"
+    android:background="#EE40C4FF"
     >
     <com.raghav.paint.DrawView
         android:id="@+id/draw_view"
